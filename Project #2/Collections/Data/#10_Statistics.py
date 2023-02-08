@@ -1,6 +1,8 @@
 file = open("../text/volby.csv", encoding="utf-8")
 
 data = file.read()
+file.close()
+
 rows = data.split("\n")
 
 names = []
@@ -20,5 +22,10 @@ for row in rows[1:]:
         count = int(columns[index])
         counts[index - 1] += count
 
-print(names)
-print(counts)
+for index in range(0, len(names)):
+    print(names[index] + "\t" + str(counts[index]))
+
+file = open("../text/vysledek.csv", "w", encoding="utf-8")
+for index in range(0, len(names)):
+    print(names[index] + "\t" + str(counts[index]))
+    file.write('"' + names[index] + '";' + str(counts[index]))
