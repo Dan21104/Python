@@ -1,0 +1,26 @@
+import microbit
+
+snake_x = 2
+snake_y = 2
+
+snake_dx = 1
+snake_dy = 0
+
+point_x = 3
+point_y = 3
+
+while True:
+    # input (events)
+    # update
+    snake_x += snake_dx
+    snake_y += snake_dy
+    if snake_x > 4:
+        snake_x = 0
+    if snake_y > 4:
+        snake_y = 0
+    # draw (refresh)
+    microbit.display.clear()
+    microbit.display.set_pixel(snake_x,snake_y,9)
+    microbit.display.set_pixel(point_x,point_y,4)
+    # delay (waiting)
+    microbit.sleep(650)
