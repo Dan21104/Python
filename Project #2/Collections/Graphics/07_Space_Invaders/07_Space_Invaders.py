@@ -3,9 +3,14 @@ import pygame
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 1000
 
+BACKGROUND_COLOR = (0, 0, 0)
+BULLET_COLOR = (255, 255, 255)
+BULLET_SIZE = 5
+
 shipA_x = SCREEN_WIDTH / 2 - 15
 shipA_y = SCREEN_HEIGHT - 70
-
+bullet_x = shipA_x
+bullet_y = shipA_y
 step = 3.5
 
 window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -32,13 +37,15 @@ def game_input():
 
 def game_update():
     global shipA_x
-    if shipA_x < -30:
-        shipA_x = -30
-    if shipA_x > SCREEN_WIDTH - 10:
-        shipA_x = SCREEN_WIDTH - 10
+    if shipA_x < -20:
+        shipA_x = -20
+    if shipA_x > SCREEN_WIDTH - 45:
+        shipA_x = SCREEN_WIDTH - 45
 
 
 def game_output():
+    window.fill(BACKGROUND_COLOR)
+    pygame.draw.circle(window, BULLET_COLOR, (bullet_x, bullet_y), BULLET_SIZE)
     window.blit(ship_A, (shipA_x, shipA_y))
     pygame.display.flip()
 
